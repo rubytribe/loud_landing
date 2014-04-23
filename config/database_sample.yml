@@ -1,0 +1,17 @@
+login: &login
+  adapter: postgresql
+  username: user
+  password: password
+  encoding: unicode
+
+development:
+  database: loud_development
+  <<: *login
+
+test: &test
+  database: loud_test
+  <<: *login
+
+production:
+  database: loud_production
+  <<: *login

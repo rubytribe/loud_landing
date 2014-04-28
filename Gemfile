@@ -13,3 +13,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
 gem 'turbolinks'
+
+gem 'haml-rails'
+
+gem 'normalize-rails'

@@ -17,3 +17,7 @@ gem 'turbolinks'
 gem 'haml-rails'
 
 gem 'normalize-rails'
+
+gem 'unicorn'
+
+gem 'mina'

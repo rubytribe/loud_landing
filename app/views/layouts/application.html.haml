@@ -2,8 +2,12 @@
 %html
   %head
     %title LoudLanding
+
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    %link{href: "//cdn-images.mailchimp.com/embedcode/slim-081711.css", rel: "stylesheet", type: "text/css"}/
+
     = javascript_include_tag "application", "data-turbolinks-track" => true
+
     = csrf_meta_tags
   %body
     = yield

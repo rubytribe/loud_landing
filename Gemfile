@@ -18,4 +18,4 @@ gem 'haml-rails'
 
 gem 'normalize-rails'
 
-gem 'gibbon'
+gem 'gibbon', github: "amro/gibbon"

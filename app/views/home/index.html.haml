@@ -1,4 +1,14 @@
 #wrapper
   = image_tag image_path 'loud.jpg'
   %h1
-    HERE AND NOW
+    here and now
+
+  #mc_embed_signup
+    %form#mc-embedded-subscribe-form.validate{action: "http://rubytribe.us7.list-manage.com/subscribe/post?u=952b17e7613ca45032efbdac8&id=961b6cf7cc", method: "post", name: "mc-embedded-subscribe-form", novalidate: "", target: "_blank"}
+      -#%label{for: "mce-EMAIL"} Subscribe to Loud
+      %input#mce-EMAIL.email{name: "EMAIL", placeholder: "email address", required: "", type: "email", value: ""}/
+
+      %div{style: "position: absolute; left: -5000px;"}
+        %input{name: "b_952b17e7613ca45032efbdac8_961b6cf7cc", type: "text", value: ""}/
+      .clear
+        %input#mc-embedded-subscribe.button{name: "subscribe", type: "submit", value: "Subscribe"}/

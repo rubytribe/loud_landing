@@ -1,0 +1,6 @@
+.posts
+  - @posts.each do |post|
+    .image-box.hide
+      .user-name
+        = post.user.first_name + ' ' + post.user.last_name
+      = image_tag(post.image_url)

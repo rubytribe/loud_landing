@@ -20,5 +20,5 @@ var nextPicture = function(){
 
 $(document).ready(function(){
   showFirstPicture();
-  setInterval(nextPicture, 5000);
+  setInterval(nextPicture, 20000);
 })

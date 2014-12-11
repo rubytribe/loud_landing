@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def index
     @venue = Venue.find(params[:id])
-    @post = @venue.posts.where(is_loud: true).last
+    @posts = @venue.posts.where(is_loud: true)
   end
 
 end

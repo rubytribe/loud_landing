@@ -1,0 +1,10 @@
+.posts
+  - @posts.each do |post|
+    .image-box.hide
+      .user-info-wrapper
+        .user-info
+          .user-picture
+            = image_tag("http://graph.facebook.com/#{post.user.uid}/picture?type=square", alt: "profile image")
+          .user-name
+            = post.user.first_name + ' ' + post.user.last_name
+      = image_tag(post.image_url, class: "post-image")

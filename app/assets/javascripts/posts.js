@@ -1,24 +1,92 @@
-var picturePosition = 0;
+var newPictures = false;
+var processing = false;
 
-var increasePicturePosition = function(){
-  picturePosition += 1;
-  if (picturePosition == $('.posts .image-box').length) {
-    picturePosition = 0;
-  }
-}
 
-var showFirstPicture = function(){
-  $('.posts .image-box').eq(0).removeClass('hide');
+var getRandomPicture = function(){
+  var rand = Math.floor(Math.random() * $('.seen .image-box').length);
+  $('.posts-wrapper .posts').append($('.seen .image-box').eq(rand));
+  nextPicture();
 }
 
 var nextPicture = function(){
-  $('.posts .image-box').eq(picturePosition).addClass('hide');
-  increasePicturePosition();
-  $('.posts .image-box').eq(picturePosition).removeClass('hide');
+  $('.posts-wrapper .posts .image-box').eq(0).removeClass('hide');
+  setHeaderWidth();
+  setBackground();
+}
+
+var checkForNewPictures = function(){
+  var last_post = $('.posts-wrapper .posts').attr('data-last-post');
+  // do not send another request if the previous one did not finish
+  if (processing) {
+    return;
+  }
+  else{
+    processing = true;
+    $.ajax({
+      method: 'GET',
+      url: document.URL,
+      data: {last_post: last_post},
+      dataType: 'html',
+      success: function(data, textStatus, xhr){
+        if (data == 'no new posts') {
+          processing = false
+        }
+        else{
+          $('.new-posts').append(data);
+          //update last post date
+          $('.posts-wrapper .posts').attr('data-last-post', $('.new-posts .posts').data('last-post'));
+          newPictures = true;
+        }
+      }
+    })
+  }
+}
+
+var updatePosts = function(){
+  // remove the empty .posts and add the new one
+  $('.posts-wrapper .posts').remove();
+  $('.posts-wrapper').append($('.new-posts .posts'));
+  newPictures = false;
+  processing = false;
+  nextPicture();
+}
+
+var changePicture = function(){
+  // check if there is a current image
+  if ($('.posts-wrapper .posts .image-box').length > 0) {
+    // move the current image to .seen
+    $('.seen').append($('.posts-wrapper .posts .image-box').eq(0));
+    // check if there is a next image
+    if ($('.posts-wrapper .posts .image-box').length > 0) {
+      nextPicture();
+    }
+    else {
+      checkForNewPictures();
+      if (newPictures){
+        updatePosts();
+      }
+      else{
+        getRandomPicture();
+      }
+    }
+  }
+}
+
+// set the header width equal to the picture width
+var setHeaderWidth = function(){
+    $('.posts-wrapper .posts .image-box .user').eq(0).width($('.posts-wrapper .posts .image-box .image-wrapper').eq(0).width());
+}
+
+// set the current image as blured background
+var setBackground = function(){
+  $('.background-image').css('background-image', "url(" + $('.posts-wrapper .posts .image-box .post-image').eq(0).attr('src') +")")
 }
 
 
-$(document).ready(function(){
-  showFirstPicture();
-  setInterval(nextPicture, 20000);
-})
+// wait for first picture to load
+setTimeout(function(){
+  $(document).ready(function(){
+    nextPicture();
+    setInterval(changePicture, 2000);
+  })
+}, 1000)

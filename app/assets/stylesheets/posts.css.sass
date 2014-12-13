@@ -1,32 +1,133 @@
+.background-image
+  content: ""
+  position: fixed
+  left: 0
+  right: 0
+  z-index: -1
+  display: block
+  height: 100%  
+  background-size: cover 
+  -webkit-filter: blur(40px)
+  -moz-filter: blur(40px)
+  -o-filter: blur(40px)
+  -ms-filter: blur(40px)
+  filter: blur(40px)
+  
+.seen, .new-posts
+  display: none
+  
+.posts-wrapper
+  height: 100%
+
 .posts
   height: 100%
-  
+  font-family: sans-serif
+  font-size: 18px
+  font-weight: lighter
+
   .image-box
     height: 100%
     margin: auto
     text-align: center
     
-    .user
-      height: 72px
-      
-    .post-image
-      max-height: 80%
-      max-width: 960px
-      
   .user-info-wrapper
+    height: 15%
     text-align: center
-  
+    margin-top: 3%
+    
+  .user
+    display: inline-block
+    background-color: white
+    overflow: hidden
+    height: 100%
+    
   .user-info
     overflow: hidden
-    display: inline-block
-    margin-top: 10px
-      
-  .user-name
-    margin: 20px 0 30px 10px
+    height: 100%
+    
+  .left-side
+    height: 100%
     float: left
     
-  .user-picture
+  .right-side
     float: left
+
+  .user-picture
+    text-align: left
+    height: 51%
     img
+      height: 100%
+      width: auto
       border-radius: 50%
-  
+      margin: 25% 15px 0 15px
+      
+  .user-name
+    text-align: left
+    color: #545454
+    font-size: 1em
+    position: relative
+    margin-top: 25%
+
+  .post-text
+    color: #3b3b3b
+    font-size: 1.3333em
+    text-align: left
+    clear: both
+    white-space: nowrap
+    text-overflow: ellipsis
+    overflow: hidden
+    margin-top: 2%
+    
+  .image-wrapper
+    display: inline-block
+    max-width: 80%
+    height: 75%
+    margin: auto
+    overflow: hidden
+    text-align: center
+    position: relative
+    
+  .post-image
+    height: 100%
+    width: auto
+    
+  .likes
+    position: absolute
+    bottom: 2%
+    left: 10%
+    color: #ffffff
+    
+  .comments
+    position: absolute
+    bottom: 2%
+    right: 10%
+    
+  .stat-number
+    color: white
+    
+  .stat-description
+    color: #d6d6d6
+    
+@media all and (min-height: 800px)
+  .posts
+    font-size: 26px
+    .user-name
+      margin-top: 22%
+
+@media all and (min-height: 900px) and (max-height: 1200px)
+  .posts
+    font-size: 32px
+    .user-name
+      margin-top: 19%
+    
+@media all and (min-height: 1250px)
+  .posts
+    font-size: 38px
+    
+@media all and (min-height: 1400px)
+  .posts
+    font-size: 44px
+    
+@media all and (min-height: 1700px)
+  .posts
+    font-size: 52px

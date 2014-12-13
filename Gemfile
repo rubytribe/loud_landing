@@ -21,3 +21,7 @@ gem 'normalize-rails'
 gem 'unicorn'
 
 gem 'mina'
+
+group :development do
+  gem 'debugger'
+end

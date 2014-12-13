@@ -13,8 +13,11 @@
   -ms-filter: blur(40px)
   filter: blur(40px)
   
-.seen
+.seen, .new-posts
   display: none
+  
+.posts-wrapper
+  height: 100%
 
 .posts
   height: 100%
@@ -28,7 +31,7 @@
     text-align: center
     
   .user-info-wrapper
-    height: 100px
+    height: 15%
     text-align: center
     margin-top: 3%
     
@@ -42,20 +45,28 @@
     overflow: hidden
     height: 100%
     
+  .left-side
+    height: 100%
+    float: left
+    
+  .right-side
+    float: left
+
   .user-picture
     text-align: left
-    float: left
+    height: 51%
     img
+      height: 100%
+      width: auto
       border-radius: 50%
-      margin: 15px 15px 0 15px
+      margin: 25% 15px 0 15px
       
   .user-name
     text-align: left
-    float: left
     color: #545454
     font-size: 1em
     position: relative
-    margin-top: 30px
+    margin-top: 25%
 
   .post-text
     color: #3b3b3b
@@ -65,9 +76,7 @@
     white-space: nowrap
     text-overflow: ellipsis
     overflow: hidden
-    margin-left: 80px
-    position: relative
-    top: -10px
+    margin-top: 2%
     
   .image-wrapper
     display: inline-block
@@ -76,8 +85,49 @@
     margin: auto
     overflow: hidden
     text-align: center
+    position: relative
     
   .post-image
     height: 100%
     width: auto
+    
+  .likes
+    position: absolute
+    bottom: 2%
+    left: 10%
+    color: #ffffff
+    
+  .comments
+    position: absolute
+    bottom: 2%
+    right: 10%
+    
+  .stat-number
+    color: white
+    
+  .stat-description
+    color: #d6d6d6
+    
+@media all and (min-height: 800px)
+  .posts
+    font-size: 26px
+    .user-name
+      margin-top: 22%
 
+@media all and (min-height: 900px) and (max-height: 1200px)
+  .posts
+    font-size: 32px
+    .user-name
+      margin-top: 19%
+    
+@media all and (min-height: 1250px)
+  .posts
+    font-size: 38px
+    
+@media all and (min-height: 1400px)
+  .posts
+    font-size: 44px
+    
+@media all and (min-height: 1700px)
+  .posts
+    font-size: 52px

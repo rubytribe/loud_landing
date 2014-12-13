@@ -1,5 +1,6 @@
 var newPictures = false;
 var processing = false;
+var counter = 0;
 
 
 var getRandomPicture = function(){
@@ -12,6 +13,7 @@ var nextPicture = function(){
   $('.posts-wrapper .posts .image-box').eq(0).removeClass('hide');
   setHeaderWidth();
   setBackground();
+  counter += 1;
 }
 
 var checkForNewPictures = function(){
@@ -52,21 +54,29 @@ var updatePosts = function(){
 }
 
 var changePicture = function(){
-  // check if there is a current image
-  if ($('.posts-wrapper .posts .image-box').length > 0) {
-    // move the current image to .seen
-    $('.seen').append($('.posts-wrapper .posts .image-box').eq(0));
-    // check if there is a next image
+  // after every 5 pictures show get the app banner
+  if (counter >= 5) {
+    $('.get-the-app').css('display', 'initial');
+    counter = 0;
+  }
+  else {
+    $('.get-the-app').css('display', 'none');
+    // check if there is a current image
     if ($('.posts-wrapper .posts .image-box').length > 0) {
-      nextPicture();
-    }
-    else {
-      checkForNewPictures();
-      if (newPictures){
-        updatePosts();
+      // move the current image to .seen
+      $('.seen').append($('.posts-wrapper .posts .image-box').eq(0));
+      // check if there is a next image
+      if ($('.posts-wrapper .posts .image-box').length > 0) {
+        nextPicture();
       }
-      else{
-        getRandomPicture();
+      else {
+        checkForNewPictures();
+        if (newPictures){
+          updatePosts();
+        }
+        else{
+          getRandomPicture();
+        }
       }
     }
   }
@@ -87,6 +97,6 @@ var setBackground = function(){
 setTimeout(function(){
   $(document).ready(function(){
     nextPicture();
-    setInterval(changePicture, 2000);
+    setInterval(changePicture, 10000);
   })
 }, 1000)

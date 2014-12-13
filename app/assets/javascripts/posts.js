@@ -27,7 +27,7 @@ var checkForNewPictures = function(){
     $.ajax({
       method: 'GET',
       url: document.URL,
-      data: {last_post: last_post},
+      data: {last_post: last_post, requested: 'new-posts'},
       dataType: 'html',
       success: function(data, textStatus, xhr){
         if (data == 'no new posts') {

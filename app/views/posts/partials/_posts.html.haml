@@ -1,4 +1,5 @@
-.posts{data: {'last-post' => @posts.last.created_at}}
+-# get the raw string with milliseconds from created_at to avoid comparison errors
+.posts{data: {'last-post' => @posts.last.attributes_before_type_cast["created_at"]}}
   - @posts.each do |post|
     .image-box.hide
       .user-info-wrapper

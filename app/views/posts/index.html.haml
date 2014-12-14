@@ -1,6 +1,7 @@
 .get-the-app
 .background-image
 .seen
+  = render 'posts/partials/posts'
 .new-posts
 .posts-wrapper
-  = render 'posts/partials/posts'
+  .posts{data: {'last-post' => @posts.last.attributes_before_type_cast["created_at"]}}

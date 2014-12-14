@@ -2,18 +2,16 @@
 .posts{data: {'last-post' => @posts.last.attributes_before_type_cast["created_at"]}}
   - @posts.each do |post|
     .image-box.hide
-      .user-info-wrapper
-        .user
-          - if post.user
-            .user-info
-              .left-side
-                .user-picture
-                  = image_tag("http://graph.facebook.com/#{post.user.uid}/picture?type=square", alt: "profile image")
-              .right-side
-                .user-name
-                  = post.user.first_name + ' ' + post.user.last_name
-                .post-text
-                  = post.text.truncate(15)
+      .user
+        - if post.user
+          .left-side
+            .user-picture
+              = image_tag("http://graph.facebook.com/#{post.user.uid}/picture?type=square", alt: "profile image")
+          .right-side
+            .user-name
+              = post.user.first_name + ' ' + post.user.last_name
+            .post-text
+              = post.text
       .image-wrapper
         = image_tag(post.image_url, class: "post-image")
         .likes

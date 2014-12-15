@@ -1,28 +1,29 @@
 -# get the raw string with milliseconds from created_at to avoid comparison errors
-.posts{data: {'last-post' => @posts.last.attributes_before_type_cast["created_at"]}}
-  - @posts.each do |post|
-    .image-box.hide
-      .user
-        - if post.user
-          .left-side
-            .user-picture
-              = image_tag("http://graph.facebook.com/#{post.user.uid}/picture?type=square", alt: "profile image")
-          .right-side
-            .user-name
-              = post.user.first_name + ' ' + post.user.last_name
-            .post-text
-              = post.text
-      .image-wrapper
-        = image_tag(post.image_url, class: "post-image")
-        .likes-wrapper
-          = image_tag('like-icon.png', class: 'posts-icon')
-          .stat-number
-            = post.likes.count
-          .stat-description
-            Likes
-        .comments-wrapper
-          = image_tag('comment-icon.png', class: 'posts-icon')
-          .stat-number
-            = post.comments.count
-          .stat-description
-            Comments
+- if @posts.any?
+  .posts{data: {'last-post' => @posts.last.attributes_before_type_cast["created_at"]}}
+    - @posts.each do |post|
+      .image-box.hide
+        .user
+          - if post.user
+            .left-side
+              .user-picture
+                = image_tag("http://graph.facebook.com/#{post.user.uid}/picture?type=square", alt: "profile image")
+            .right-side
+              .user-name
+                = post.user.first_name + ' ' + post.user.last_name
+              .post-text
+                = post.text
+        .image-wrapper
+          = image_tag(post.image_url, class: "post-image")
+          .likes-wrapper
+            = image_tag('like-icon.png', class: 'posts-icon')
+            .stat-number
+              = post.likes.count
+            .stat-description
+              Likes
+          .comments-wrapper
+            = image_tag('comment-icon.png', class: 'posts-icon')
+            .stat-number
+              = post.comments.count
+            .stat-description
+              Comments

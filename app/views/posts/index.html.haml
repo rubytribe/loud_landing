@@ -4,4 +4,5 @@
   = render 'posts/partials/posts'
 .new-posts
 .posts-wrapper
-  .posts{data: {'last-post' => @posts.last.attributes_before_type_cast["created_at"]}}
+  - if @posts.any?
+    .posts{data: {'last-post' => @posts.last.attributes_before_type_cast["created_at"]}}

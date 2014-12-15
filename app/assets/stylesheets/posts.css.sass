@@ -1,3 +1,7 @@
+@font-face
+  font-family: 'Proxima Nova Light'
+  src: font-url('ProximaNova-Light.otf')
+
 .get-the-app
   content: ""
   position: fixed
@@ -34,7 +38,7 @@
 
 .posts
   height: 100%
-  font-family: sans-serif
+  font-family: 'Proxima Nova Light' sans-serif
   font-size: 18px
   font-weight: lighter
 
@@ -95,28 +99,44 @@
     height: 100%
     width: auto
     
-  .likes
+  .likes-wrapper
     position: absolute
     bottom: 2%
     left: 10%
     color: #ffffff
     
-  .comments
+  .comments-wrapper
     position: absolute
     bottom: 2%
     right: 10%
+    font-size: 1em
     
   .stat-number
     color: white
+    float: left
+    margin-top: 0.75em
+    margin-right: 0.2em
     
   .stat-description
     color: #d6d6d6
+    float: left
+    margin-top: 0.75em
+    
+  .posts-icon
+    width: 2.5em
+    height: auto
+    float: left
+    margin-right: 0.4em
     
 @media all and (min-height: 800px)
   .posts
     font-size: 26px
 
-@media all and (min-height: 900px) and (max-height: 1200px)
+@media all and (min-height: 1000px)
+  .posts
+    font-size: 28px
+    
+@media all and (min-height: 1100px)
   .posts
     font-size: 32px
     
@@ -126,8 +146,8 @@
     
 @media all and (min-height: 1400px)
   .posts
-    font-size: 44px
+    font-size: 40px
     
 @media all and (min-height: 1700px)
   .posts
-    font-size: 52px
+    font-size: 48px

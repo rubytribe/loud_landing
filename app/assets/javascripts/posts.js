@@ -97,6 +97,6 @@ var setBackground = function(){
 setTimeout(function(){
   $(document).ready(function(){
     getRandomPicture();
-    setInterval(changePicture, 10000);
+    //setInterval(changePicture, 10000);
   })
 }, 1000)

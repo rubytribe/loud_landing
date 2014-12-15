@@ -14,13 +14,15 @@
               = post.text
       .image-wrapper
         = image_tag(post.image_url, class: "post-image")
-        .likes
-          %span.stat-number
+        .likes-wrapper
+          = image_tag('like-icon.png', class: 'posts-icon')
+          .stat-number
             = post.likes.count
-          %span.stat-description
+          .stat-description
             Likes
-        .comments
-          %span.stat-number
+        .comments-wrapper
+          = image_tag('comment-icon.png', class: 'posts-icon')
+          .stat-number
             = post.comments.count
-          %span.stat-description
+          .stat-description
             Comments

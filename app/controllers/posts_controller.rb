@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def index
     @venue = Venue.find(params[:id])
-    @posts = @venue.posts.where(is_loud: true).order('created_at')
+    @posts = @venue.posts.order('created_at')
     
     if params[:requested] == 'new-posts'
       @posts = @posts.where('created_at > ?', params[:last_post])
